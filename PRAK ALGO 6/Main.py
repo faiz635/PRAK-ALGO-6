@@ -47,40 +47,22 @@
 # print("Rata Rata : ", rata)
 
 
-hitung = 0 
-jawab = 'ya'
+def hitung_hari(bulan, tahun):
+    bulan_dan_hari = {
+        "Januari": 31, "Februari": 28, "Maret": 31, "April": 30,
+        "Mei": 31, "Juni": 30, "Juli": 31, "Agustus": 31,
+        "September": 30, "Oktober": 31, "November": 30, "Desember": 31}
+    
+    if (tahun % 4 == 0 and tahun % 100 != 0) or (tahun % 400 == 0):
+        bulan_dan_hari["Februari"] = 29 
+    
+    if bulan in bulan_dan_hari:
+        return bulan_dan_hari[bulan]
+    else: 
+        return "Bulan tidak valid"
+    
+bulan = input("Masukkan nama bulan (contoh: Januari): ")
+tahun = int(input("Masukkan tahun (contoh: 2024): "))
 
-
-while(jawab == 'ya'):
-    bulan = int(input('Masukan Bulan : '))
-    tahun = int(input('Masukan Tahun : '))
-    jawab = str(input('Konfirmasi : '))
-
-
-
-    def hitung_bulan():
-
-         if(bulan == 1 or bulan == 3 or bulan ==5 
-            or bulan == 7 or bulan == 8 or bulan == 10
-            or bulan == 12):
-              print('Hari = 31')
-
-
-         elif(bulan >= 13 or bulan <=0):
-              print('Data Invalid')
-
-
-         elif (bulan == 2):
-              
-              if(tahun % 4 == 0 and bulan == 2):
-                   print('Hari = 29')
-                   return 
-              
-              else:
-                   print('Hari = 28')
-
-         else :
-              print('Hari = 30')  
-
-
-    hitung_bulan()   
+jumlah_hari = hitung_hari(bulan, tahun)
+print(f"Jumlah hari di bulan {bulan} tahun {tahun} adalah: {jumlah_hari}")
